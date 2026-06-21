@@ -1,0 +1,322 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okra API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all auth records", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/auths",
+            "body": { "type": "json", "data": "{\n  \"pdf\": false\n}" }
+          },
+          "docs": "Returns authentication records for all of your customers."
+        },
+        {
+          "info": { "name": "Retrieve an auth record by id", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/auth/getById",
+            "body": { "type": "json", "data": "{\n  \"id\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve an auth record by id."
+        },
+        {
+          "info": { "name": "Retrieve auth records by customer", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/auth/getByCustomer",
+            "body": { "type": "json", "data": "{\n  \"customer\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve auth records by customer."
+        },
+        {
+          "info": { "name": "Retrieve auth records by date range", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/auth/getByDate",
+            "body": { "type": "json", "data": "{\n  \"from\": \"2024-01-01\",\n  \"to\": \"2024-12-31\"\n}" }
+          },
+          "docs": "Retrieve auth records by date range."
+        },
+        {
+          "info": { "name": "Retrieve auth records by bank", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/auth/getByBank",
+            "body": { "type": "json", "data": "{\n  \"bank\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve auth records by bank."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Balance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all balance records", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/balances",
+            "body": { "type": "json", "data": "{\n  \"pdf\": false\n}" }
+          },
+          "docs": "Retrieve all balance records."
+        },
+        {
+          "info": { "name": "Retrieve a balance record by id", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/balance/getById",
+            "body": { "type": "json", "data": "{\n  \"id\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve a balance record by id."
+        },
+        {
+          "info": { "name": "Retrieve balances by customer", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/balance/getByCustomer",
+            "body": { "type": "json", "data": "{\n  \"customer\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve balances by customer."
+        },
+        {
+          "info": { "name": "Retrieve balances by account", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/balance/getByAccount",
+            "body": { "type": "json", "data": "{\n  \"account\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve balances by account."
+        },
+        {
+          "info": { "name": "Retrieve balances by type and value", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/balance/getByType",
+            "body": { "type": "json", "data": "{\n  \"type\": \"available\",\n  \"value\": 1000\n}" }
+          },
+          "docs": "Retrieve balances by type and value."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all linked accounts", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/accounts",
+            "body": { "type": "json", "data": "{\n  \"pdf\": false\n}" }
+          },
+          "docs": "Retrieve all linked accounts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all transaction records", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/transactions",
+            "body": { "type": "json", "data": "{\n  \"pdf\": false\n}" }
+          },
+          "docs": "Retrieve all transaction records."
+        },
+        {
+          "info": { "name": "Retrieve transactions by customer", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/transaction/getByCustomer",
+            "body": { "type": "json", "data": "{\n  \"customer\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve transactions by customer."
+        },
+        {
+          "info": { "name": "Retrieve transactions by account", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/transaction/getByAccount",
+            "body": { "type": "json", "data": "{\n  \"account\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve transactions by account."
+        },
+        {
+          "info": { "name": "Retrieve transactions by date range", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/transaction/getByDate",
+            "body": { "type": "json", "data": "{\n  \"from\": \"2024-01-01\",\n  \"to\": \"2024-12-31\"\n}" }
+          },
+          "docs": "Retrieve transactions by date range."
+        },
+        {
+          "info": { "name": "Retrieve transactions by bank", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/transaction/getByBank",
+            "body": { "type": "json", "data": "{\n  \"bank\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve transactions by bank."
+        },
+        {
+          "info": { "name": "Retrieve a customer's spending pattern", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/transactions/spending-pattern",
+            "body": { "type": "json", "data": "{\n  \"customer_id\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve a customer's spending pattern."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve all identity records", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/identities",
+            "body": { "type": "json", "data": "{\n  \"pdf\": false\n}" }
+          },
+          "docs": "Retrieve all identity records."
+        },
+        {
+          "info": { "name": "Retrieve an identity record by id", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/identity/getById",
+            "body": { "type": "json", "data": "{\n  \"id\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve an identity record by id."
+        },
+        {
+          "info": { "name": "Retrieve identity by customer", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/identity/getByCustomer",
+            "body": { "type": "json", "data": "{\n  \"customer\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve identity by customer."
+        },
+        {
+          "info": { "name": "Retrieve identity records by date range", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/identity/getByDate",
+            "body": { "type": "json", "data": "{\n  \"from\": \"2024-01-01\",\n  \"to\": \"2024-12-31\"\n}" }
+          },
+          "docs": "Retrieve identity records by date range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Income",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Retrieve income records", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/income",
+            "body": { "type": "json", "data": "{\n  \"pdf\": false\n}" }
+          },
+          "docs": "Retrieve income verification records."
+        },
+        {
+          "info": { "name": "Retrieve income by customer", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/income/getByCustomer",
+            "body": { "type": "json", "data": "{\n  \"customer\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve income by customer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Initiate a bank-to-bank payment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/pay",
+            "body": { "type": "json", "data": "{\n  \"amount\": 1000,\n  \"currency\": \"NGN\",\n  \"account\": \"<string>\"\n}" }
+          },
+          "docs": "Initiate an instant bank-to-bank payment."
+        },
+        {
+          "info": { "name": "Verify a payment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/pay/verify",
+            "body": { "type": "json", "data": "{\n  \"payment_id\": \"<string>\"\n}" }
+          },
+          "docs": "Verify a payment."
+        },
+        {
+          "info": { "name": "Retrieve a payment by id", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/pay/getById",
+            "body": { "type": "json", "data": "{\n  \"id\": \"<string>\"\n}" }
+          },
+          "docs": "Retrieve a payment by id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Re-trigger webhook callbacks", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/callback/trigger",
+            "body": { "type": "json", "data": "{\n  \"recordIds\": [\"<string>\"],\n  \"url\": \"https://example.com/webhook\"\n}" }
+          },
+          "docs": "Re-trigger webhook callbacks for the supplied record ids."
+        }
+      ]
+    }
+  ]
+}

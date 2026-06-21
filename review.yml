@@ -1,0 +1,114 @@
+aid: okra-ng
+name: Okra
+review:
+  question: Does Okra expose a documented public WebSocket or streaming API, and is the API still operating?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Okra's API was entirely request/response
+    REST over HTTPS (all product and query endpoints are POST), with
+    asynchronous delivery handled by HTTP webhook callbacks to a customer-hosted
+    callback_url - not WebSocket, SSE, or any provider-hosted streaming
+    transport. Webhooks are an outbound HTTP event mechanism and are modeled in
+    the OpenAPI/Postman artifacts, not as an event-driven streaming API.
+findings:
+  summary: |
+    Okra did not publish a documented public WebSocket or streaming API. The
+    Okra platform exposed only REST (HTTPS) endpoints under
+    https://api.okra.ng/v2, all invoked as POST requests authenticated with a
+    Bearer secret key. Asynchronous results were delivered via outbound HTTP
+    webhook callbacks to a configured callback_url, and callbacks could be
+    re-triggered via POST /callback/trigger. The browser-side Okra Link widget
+    (cdn.okra.ng/v2/bundle.js) handled account linking but is a client SDK, not
+    an API transport. IMPORTANT: Okra wound down operations in May 2025 - both
+    the core open-banking API business and its Nebula product were discontinued,
+    and a UK firm (Kernel) acquired remaining assets. The API and developer
+    docs may no longer be live; this catalog documents the interface as it was
+    publicly published.
+  companyStatus:
+    operating: false
+    windDownDate: '2025-05'
+    note: |
+      Okra Technologies (Lagos, Nigeria; founded 2019) quietly shut down its
+      open-banking API and Nebula cloud product in May 2025 despite remaining
+      runway, citing strategic and market challenges, and returned a portion of
+      capital to investors. Assets were acquired by UK firm Kernel. No official
+      public shutdown statement was issued. Documentation and API endpoints
+      referenced here may be unreachable.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.okra.ng/v2
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST callbacks to a customer-configured callback_url; re-triggerable via POST /callback/trigger. Not WebSocket or SSE.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint was documented in Okra's API reference or product pages.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming surface was documented.
+  endpointsConfirmedRest:
+    - POST https://api.okra.ng/v2/products/auths
+    - POST https://api.okra.ng/v2/auth/getById
+    - POST https://api.okra.ng/v2/auth/getByCustomer
+    - POST https://api.okra.ng/v2/auth/getByDate
+    - POST https://api.okra.ng/v2/auth/getByBank
+    - POST https://api.okra.ng/v2/products/balances
+    - POST https://api.okra.ng/v2/balance/getById
+    - POST https://api.okra.ng/v2/balance/getByCustomer
+    - POST https://api.okra.ng/v2/balance/getByAccount
+    - POST https://api.okra.ng/v2/balance/getByType
+    - POST https://api.okra.ng/v2/products/accounts
+    - POST https://api.okra.ng/v2/products/transactions
+    - POST https://api.okra.ng/v2/transaction/getByCustomer
+    - POST https://api.okra.ng/v2/transaction/getByAccount
+    - POST https://api.okra.ng/v2/transaction/getByDate
+    - POST https://api.okra.ng/v2/transaction/getByBank
+    - POST https://api.okra.ng/v2/products/transactions/spending-pattern
+    - POST https://api.okra.ng/v2/products/identities
+    - POST https://api.okra.ng/v2/identity/getById
+    - POST https://api.okra.ng/v2/identity/getByCustomer
+    - POST https://api.okra.ng/v2/identity/getByDate
+    - POST https://api.okra.ng/v2/products/income
+    - POST https://api.okra.ng/v2/products/pay
+    - POST https://api.okra.ng/v2/pay/verify
+    - POST https://api.okra.ng/v2/callback/trigger
+sources:
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+    note: API overview; base URL https://api.okra.ng/v2, Bearer auth, OpenAPI 3.0 spec published. (May be offline post-shutdown.)
+  - url: https://docs.okra.ng/docs/overview
+    type: Documentation
+    note: Product overview - auth, balance, transactions, identity, income; webhooks via callback_url.
+  - url: https://github.com/mmuoDev/okra-php-wrapper
+    type: SourceCode
+    note: Community PHP wrapper enumerating exact product and query endpoint paths used to confirm the REST surface.
+  - url: https://github.com/okraHQ/okra-js
+    type: SourceCode
+    note: Official Okra Link widget; products array includes auth, balance, transactions, identity, income, payment; supports callback_url.
+  - url: https://okra.ng/products/payments
+    type: Documentation
+    note: Payments product - one-time and recurring bank-to-bank payments, instant/future, verify, bulk CSV debits.
+  - url: https://thepaypers.com/fintech/news/okra-refunds-investors-as-it-closes-nigerias-open-banking-api
+    type: News
+    note: Reports Okra concluding its Nigeria open-banking API and refunding investors.
+  - url: https://techlabari.com/nigerian-open-banking-startup-okra-quietly-shut-in-may-2025/
+    type: News
+    note: Reports Okra quietly shut down in May 2025; core API and Nebula discontinued; assets to UK firm Kernel.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE streaming surface exists, so no AsyncAPI document was
+    authored. The REST surface (POST product and query endpoints) plus outbound
+    webhook callbacks are captured in apis.yml, the OpenAPI specification, and
+    the Postman / Open Collection artifacts. Company-status findings note the
+    May 2025 wind-down so the catalog does not misrepresent Okra as an active
+    provider.

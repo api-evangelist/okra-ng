@@ -1,0 +1,136 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Okra
+providerId: okra-ng
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Open Banking
+- Open Finance
+- Fintech
+- Africa
+- Nigeria
+- Plans
+description: >-
+  Okra used a sales-led pricing model. Public materials described per-API-call
+  / per-record pricing for data products (Auth, Balance, Transactions,
+  Identity, Income) and per-transaction fees for Payments, with custom volume
+  and enterprise agreements negotiated directly. Exact published rates were
+  not transparently listed, so monetary values here are not reconciled. NOTE:
+  Okra wound down operations in May 2025; pricing is documented historically.
+notes: >-
+  Pricing was contact-sales / quote-based; specific per-call and per-payment
+  rates were not publicly enumerated and are not reconciled in this artifact.
+sources:
+- https://okra.ng/pricing
+- https://docs.okra.ng/
+plans:
+- id: okra-ng-pay-as-you-go
+  name: Pay-as-you-go (Data Products)
+  type: usage
+  description: >-
+    Per-call / per-record usage pricing across the Okra data products. Exact
+    rates were quote-based and are not reconciled.
+  entries:
+  - label: Auth
+    name: auth
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Balance
+    name: balance
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Transactions
+    name: transactions
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Identity
+    name: identity
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Income
+    name: income
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Auth & Link
+  - name: Accounts & Balance
+  - name: Transactions
+  - name: Identity & Income
+- id: okra-ng-payments
+  name: Payments
+  type: usage
+  description: >-
+    Bank-to-bank one-time and recurring payments billed per transaction.
+    Per-transaction fees were quote-based and are not reconciled.
+  entries:
+  - label: Payment Transaction
+    name: payment_transaction
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Instant Payments
+  - name: Recurring / Direct Debit
+  - name: Bulk Payments (CSV)
+- id: okra-ng-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom volume commitments, dedicated support, and negotiated terms for
+    high-volume fintech and bank customers. Contact Okra sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: NG
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: Dedicated Support
+  - name: SLA
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

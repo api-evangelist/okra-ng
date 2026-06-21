@@ -1,0 +1,178 @@
+aid: okra-ng
+url: https://raw.githubusercontent.com/api-evangelist/okra-ng/refs/heads/main/apis.yml
+name: Okra
+kind: company
+description: Okra was an African open-finance / open-banking infrastructure company
+  based in Lagos, Nigeria. Its REST API connected applications to Nigerian bank
+  accounts to retrieve authentication details, balances, transactions, identity,
+  and income data, and to initiate bank-to-bank payments, with a Link widget and
+  webhooks. Okra wound down operations in May 2025; this catalog documents the
+  API as it was publicly published.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Open Banking
+- Open Finance
+- Fintech
+- Africa
+- Nigeria
+- Financial Data
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: okra-ng:okra-ng-auth-link-api
+  name: Okra Auth & Link API
+  tags:
+  - Auth
+  - Link
+  - Account Linking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
+  properties:
+  - url: https://docs.okra.ng/docs/auth
+    type: Documentation
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+  - url: openapi/okra-ng-openapi.yml
+    type: OpenAPI
+  - url: collections/okra-ng.postman_collection.json
+    type: PostmanCollection
+  - url: collections/okra-ng.opencollection.json
+    type: OpenCollection
+  description: Connects a customer's bank account via the Okra Link widget and
+    retrieves authentication records - account and NUBAN numbers across current,
+    savings, and domiciliary accounts - filterable by id, customer, bank, and date.
+- aid: okra-ng:okra-ng-accounts-balance-api
+  name: Okra Accounts & Balance API
+  tags:
+  - Accounts
+  - Balance
+  - Financial Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.okra.ng/account-data/balance
+  baseURL: https://api.okra.ng/v2
+  properties:
+  - url: https://docs.okra.ng/docs/balance
+    type: Documentation
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+  - url: openapi/okra-ng-openapi.yml
+    type: OpenAPI
+  - url: collections/okra-ng.postman_collection.json
+    type: PostmanCollection
+  - url: collections/okra-ng.opencollection.json
+    type: OpenCollection
+  description: Retrieves a record's linked accounts and real-time ledger and
+    available balances, filterable by id, customer, account, balance type, and
+    date range.
+- aid: okra-ng:okra-ng-transactions-api
+  name: Okra Transactions API
+  tags:
+  - Transactions
+  - History
+  - Financial Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
+  properties:
+  - url: https://docs.okra.ng/docs/overview
+    type: Documentation
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+  - url: openapi/okra-ng-openapi.yml
+    type: OpenAPI
+  - url: collections/okra-ng.postman_collection.json
+    type: PostmanCollection
+  - url: collections/okra-ng.opencollection.json
+    type: OpenCollection
+  description: Returns customer-authorized transaction history of up to 24 months
+    across current, savings, and domiciliary accounts, filterable by customer,
+    account, bank, and date, plus a spending-pattern analysis endpoint.
+- aid: okra-ng:okra-ng-identity-income-api
+  name: Okra Identity & Income API
+  tags:
+  - Identity
+  - Income
+  - KYC
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.okra.ng/docs/validate-customers
+  baseURL: https://api.okra.ng/v2
+  properties:
+  - url: https://docs.okra.ng/docs/validate-customers
+    type: Documentation
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+  - url: openapi/okra-ng-openapi.yml
+    type: OpenAPI
+  - url: collections/okra-ng.postman_collection.json
+    type: PostmanCollection
+  - url: collections/okra-ng.opencollection.json
+    type: OpenCollection
+  description: Retrieves KYC identity on file with the bank (names, emails, phone
+    numbers, addresses) and verifies a customer's income data drawn from their
+    connected accounts.
+- aid: okra-ng:okra-ng-payments-api
+  name: Okra Payments API
+  tags:
+  - Payments
+  - Bank to Bank
+  - Direct Debit
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://okra.ng/products/payments
+  baseURL: https://api.okra.ng/v2
+  properties:
+  - url: https://okra.ng/products/payments
+    type: Documentation
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+  - url: openapi/okra-ng-openapi.yml
+    type: OpenAPI
+  - url: collections/okra-ng.postman_collection.json
+    type: PostmanCollection
+  - url: collections/okra-ng.opencollection.json
+    type: OpenCollection
+  description: Collects one-time and recurring bank-to-bank payments via USSD and
+    internet banking, creates instant and future payments, retrieves and verifies
+    payment status, and supports bulk debits via CSV upload.
+- aid: okra-ng:okra-ng-webhooks-api
+  name: Okra Webhooks API
+  tags:
+  - Webhooks
+  - Callbacks
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://blog.okra.ng/understanding-webhooks/
+  baseURL: https://api.okra.ng/v2
+  properties:
+  - url: https://blog.okra.ng/understanding-webhooks/
+    type: Documentation
+  - url: https://docs.okra.ng/reference
+    type: APIReference
+  - url: openapi/okra-ng-openapi.yml
+    type: OpenAPI
+  - url: collections/okra-ng.postman_collection.json
+    type: PostmanCollection
+  - url: collections/okra-ng.opencollection.json
+    type: OpenCollection
+  description: Delivers asynchronous callbacks to a configured callback_url when
+    Okra finishes processing a product's data for a Record, and lets you re-trigger
+    callbacks for a set of record ids.
+common:
+- type: GitHubOrganization
+  url: https://github.com/okraHQ
+- type: LinkedIn
+  url: https://www.linkedin.com/company/okra-technologies
+- type: Website
+  url: https://okra.ng/
+- type: Documentation
+  url: https://docs.okra.ng/
+- type: Plans
+  url: plans/okra-ng-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/okra-ng-rate-limits.yml
+- type: FinOps
+  url: finops/okra-ng-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

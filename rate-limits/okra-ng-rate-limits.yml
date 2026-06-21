@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Okra
+providerId: okra-ng
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Open Banking
+- Open Finance
+- Fintech
+- Africa
+- Nigeria
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Okra applied per-account rate limits and pagination on its data product and
+  payment endpoints. List endpoints supported page / limit parameters
+  (default limit 20 per page) and returned pagination metadata. Specific
+  per-endpoint request-per-minute / per-day ceilings were not publicly
+  enumerated and are not reconciled in this artifact. NOTE: Okra wound down
+  operations in May 2025.
+notes: >-
+  Per-endpoint numeric limits were not publicly documented; verify against an
+  account dashboard if any successor service exposes one. Values here are not
+  reconciled.
+sources:
+- https://docs.okra.ng/reference
+- https://docs.okra.ng/
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Minute (RPM)
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Per-account request ceiling; specific value not publicly documented.
+- name: Page Size (limit)
+  scope: request
+  metric: records
+  limit: 20 default
+  notes: List endpoints accept page and limit parameters; default page size is 20.
+- name: Payments
+  scope: account
+  metric: transactions
+  limit: see provider documentation
+  notes: Payment throughput governed by account and bank-channel limits.
+policies:
+- name: Pagination
+  description: List endpoints return pagination (totalPages, nextPage, previousPage); iterate pages to retrieve all records.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
