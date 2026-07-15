@@ -159,6 +159,8 @@ apis:
     Okra finishes processing a product's data for a Record, and lets you re-trigger
     callbacks for a set of record ids.
 common:
+- type: AgenticAccess
+  url: agentic-access/okra-ng-agentic-access.yml
 - type: DomainSecurity
   url: security/okra-ng-domain-security.yml
 - type: Authentication
