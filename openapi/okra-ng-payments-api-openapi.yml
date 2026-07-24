@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  title: Okra Accounts Payments API
+  description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
+  termsOfService: https://okra.ng/terms
+  contact:
+    name: Okra Support
+    email: support@okra.ng
+  version: '2.0'
+servers:
+- url: https://api.okra.ng/v2
+  description: Production
+- url: https://api.okra.ng/v2/sandbox
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Payments
+  description: Bank-to-bank payments.
+paths:
+  /products/pay:
+    post:
+      operationId: initiatePayment
+      tags:
+      - Payments
+      summary: Initiate a bank-to-bank payment
+      description: Creates an instant one-time bank-to-bank payment (debit) from a customer's connected account to a configured beneficiary account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /pay/verify:
+    post:
+      operationId: verifyPayment
+      tags:
+      - Payments
+      summary: Verify a payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - payment_id
+              properties:
+                payment_id:
+                  type: string
+                  description: The Okra payment id to verify.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /pay/getById:
+    post:
+      operationId: getPaymentById
+      tags:
+      - Payments
+      summary: Retrieve a payment by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    PaymentResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: '#/components/schemas/Payment'
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+        account:
+          type: string
+        customer:
+          type: string
+    IdRequest:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The Okra record id.
+    PaymentRequest:
+      type: object
+      required:
+      - amount
+      - currency
+      - account
+      properties:
+        amount:
+          type: number
+          description: Amount to debit, in the smallest currency unit.
+        currency:
+          type: string
+          default: NGN
+        account:
+          type: string
+          description: Source account id to debit.
+        customer:
+          type: string
+          description: Customer id the payment is for.
+        callback_url:
+          type: string
+          format: uri
+          description: URL to receive the payment webhook callback.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Okra secret API key supplied as a Bearer token.

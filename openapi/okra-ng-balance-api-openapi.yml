@@ -1,0 +1,250 @@
+openapi: 3.0.1
+info:
+  title: Okra Accounts Balance API
+  description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
+  termsOfService: https://okra.ng/terms
+  contact:
+    name: Okra Support
+    email: support@okra.ng
+  version: '2.0'
+servers:
+- url: https://api.okra.ng/v2
+  description: Production
+- url: https://api.okra.ng/v2/sandbox
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Balance
+  description: Account balances.
+paths:
+  /products/balances:
+    post:
+      operationId: getBalances
+      tags:
+      - Balance
+      summary: Retrieve all balance records
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PdfFlagRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /balance/getById:
+    post:
+      operationId: getBalanceById
+      tags:
+      - Balance
+      summary: Retrieve a balance record by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /balance/getByCustomer:
+    post:
+      operationId: getBalanceByCustomer
+      tags:
+      - Balance
+      summary: Retrieve balances by customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /balance/getByAccount:
+    post:
+      operationId: getBalanceByAccount
+      tags:
+      - Balance
+      summary: Retrieve balances by account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /balance/getByType:
+    post:
+      operationId: getBalanceByType
+      tags:
+      - Balance
+      summary: Retrieve balances by type and value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BalanceTypeRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    PdfFlagRequest:
+      type: object
+      properties:
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
+    AccountRequest:
+      type: object
+      required:
+      - account
+      properties:
+        account:
+          type: string
+          description: The Okra account id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    BalanceListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            balances:
+              type: array
+              items:
+                $ref: '#/components/schemas/Balance'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    CustomerRequest:
+      type: object
+      required:
+      - customer
+      properties:
+        customer:
+          type: string
+          description: The Okra customer id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    IdRequest:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The Okra record id.
+    BalanceTypeRequest:
+      type: object
+      required:
+      - type
+      - value
+      properties:
+        type:
+          type: string
+          description: The balance type to filter on (e.g. available, ledger).
+        value:
+          type: number
+          description: The threshold value to compare against.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+    Balance:
+      type: object
+      properties:
+        id:
+          type: string
+        account:
+          type: string
+        customer:
+          type: string
+        ledger_balance:
+          type: number
+        available_balance:
+          type: number
+        currency:
+          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Okra secret API key supplied as a Bearer token.

@@ -1,0 +1,219 @@
+openapi: 3.0.1
+info:
+  title: Okra Accounts Identity API
+  description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
+  termsOfService: https://okra.ng/terms
+  contact:
+    name: Okra Support
+    email: support@okra.ng
+  version: '2.0'
+servers:
+- url: https://api.okra.ng/v2
+  description: Production
+- url: https://api.okra.ng/v2/sandbox
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Identity
+  description: KYC identity on file with the bank.
+paths:
+  /products/identities:
+    post:
+      operationId: getIdentities
+      tags:
+      - Identity
+      summary: Retrieve all identity records
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PdfFlagRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /identity/getById:
+    post:
+      operationId: getIdentityById
+      tags:
+      - Identity
+      summary: Retrieve an identity record by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /identity/getByCustomer:
+    post:
+      operationId: getIdentityByCustomer
+      tags:
+      - Identity
+      summary: Retrieve identity by customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /identity/getByDate:
+    post:
+      operationId: getIdentityByDate
+      tags:
+      - Identity
+      summary: Retrieve identity records by date range
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DateRangeRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    PdfFlagRequest:
+      type: object
+      properties:
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
+    IdentityListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            identity:
+              type: array
+              items:
+                $ref: '#/components/schemas/Identity'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    DateRangeRequest:
+      type: object
+      required:
+      - from
+      - to
+      properties:
+        from:
+          type: string
+          format: date
+          description: Start date (YYYY-MM-DD).
+        to:
+          type: string
+          format: date
+          description: End date (YYYY-MM-DD).
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    Identity:
+      type: object
+      properties:
+        id:
+          type: string
+        customer:
+          type: string
+        fullname:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        address:
+          type: string
+        bvn:
+          type: string
+    CustomerRequest:
+      type: object
+      required:
+      - customer
+      properties:
+        customer:
+          type: string
+          description: The Okra customer id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    IdRequest:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The Okra record id.
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Okra secret API key supplied as a Bearer token.

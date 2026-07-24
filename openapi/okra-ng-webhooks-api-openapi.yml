@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  title: Okra Accounts Webhooks API
+  description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
+  termsOfService: https://okra.ng/terms
+  contact:
+    name: Okra Support
+    email: support@okra.ng
+  version: '2.0'
+servers:
+- url: https://api.okra.ng/v2
+  description: Production
+- url: https://api.okra.ng/v2/sandbox
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+  description: Callback management.
+paths:
+  /callback/trigger:
+    post:
+      operationId: triggerCallback
+      tags:
+      - Webhooks
+      summary: Re-trigger webhook callbacks
+      description: Re-triggers webhook callbacks for the supplied record ids, optionally redirecting the callbacks to a different URL.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - recordIds
+              properties:
+                recordIds:
+                  type: array
+                  items:
+                    type: string
+                  description: Record ids to re-trigger callbacks for.
+                url:
+                  type: string
+                  format: uri
+                  description: Optional URL to redirect the webhooks to.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    GenericResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Okra secret API key supplied as a Bearer token.
