@@ -8,7 +8,20 @@ description: Okra was an African open-finance / open-banking infrastructure comp
   and income data, and to initiate bank-to-bank payments, with a Link widget and
   webhooks. Okra wound down operations in May 2025; this catalog documents the
   API as it was publicly published.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/okra-ng.png
 tags:
 - Open Banking
 - Open Finance
@@ -20,144 +33,230 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: okra-ng:okra-ng-auth-link-api
-  name: Okra Auth & Link API
-  tags:
-  - Auth
-  - Link
-  - Account Linking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: okra-ng:okra-ng-accounts-api
+  name: Okra Accounts API
+  description: Linked bank accounts.
   humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
-  properties:
-  - url: https://docs.okra.ng/docs/auth
-    type: Documentation
-  - url: https://docs.okra.ng/reference
-    type: APIReference
-  - url: openapi/okra-ng-openapi.yml
-    type: OpenAPI
-  - url: collections/okra-ng.postman_collection.json
-    type: PostmanCollection
-  - url: collections/okra-ng.opencollection.json
-    type: OpenCollection
-  description: Connects a customer's bank account via the Okra Link widget and
-    retrieves authentication records - account and NUBAN numbers across current,
-    savings, and domiciliary accounts - filterable by id, customer, bank, and date.
-- aid: okra-ng:okra-ng-accounts-balance-api
-  name: Okra Accounts & Balance API
   tags:
   - Accounts
-  - Balance
-  - Financial Data
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.okra.ng/account-data/balance
-  baseURL: https://api.okra.ng/v2
   properties:
-  - url: https://docs.okra.ng/docs/balance
-    type: Documentation
-  - url: https://docs.okra.ng/reference
-    type: APIReference
-  - url: openapi/okra-ng-openapi.yml
-    type: OpenAPI
-  - url: collections/okra-ng.postman_collection.json
-    type: PostmanCollection
-  - url: collections/okra-ng.opencollection.json
-    type: OpenCollection
-  description: Retrieves a record's linked accounts and real-time ledger and
-    available balances, filterable by id, customer, account, balance type, and
-    date range.
-- aid: okra-ng:okra-ng-transactions-api
-  name: Okra Transactions API
-  tags:
-  - Transactions
-  - History
-  - Financial Data
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - type: OpenAPI
+    url: openapi/okra-ng-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
+- aid: okra-ng:okra-ng-auth-api
+  name: Okra Auth API
+  description: Account authentication records and Link.
   humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
+  tags:
+  - Auth
   properties:
-  - url: https://docs.okra.ng/docs/overview
-    type: Documentation
-  - url: https://docs.okra.ng/reference
-    type: APIReference
-  - url: openapi/okra-ng-openapi.yml
-    type: OpenAPI
-  - url: collections/okra-ng.postman_collection.json
-    type: PostmanCollection
-  - url: collections/okra-ng.opencollection.json
-    type: OpenCollection
-  description: Returns customer-authorized transaction history of up to 24 months
-    across current, savings, and domiciliary accounts, filterable by customer,
-    account, bank, and date, plus a spending-pattern analysis endpoint.
-- aid: okra-ng:okra-ng-identity-income-api
-  name: Okra Identity & Income API
+  - type: OpenAPI
+    url: openapi/okra-ng-auth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
+- aid: okra-ng:okra-ng-balance-api
+  name: Okra Balance API
+  description: Account balances.
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
+  tags:
+  - Balance
+  properties:
+  - type: OpenAPI
+    url: openapi/okra-ng-balance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
+- aid: okra-ng:okra-ng-identity-api
+  name: Okra Identity API
+  description: KYC identity on file with the bank.
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
   tags:
   - Identity
-  - Income
-  - KYC
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.okra.ng/docs/validate-customers
-  baseURL: https://api.okra.ng/v2
   properties:
-  - url: https://docs.okra.ng/docs/validate-customers
-    type: Documentation
-  - url: https://docs.okra.ng/reference
-    type: APIReference
-  - url: openapi/okra-ng-openapi.yml
-    type: OpenAPI
-  - url: collections/okra-ng.postman_collection.json
-    type: PostmanCollection
-  - url: collections/okra-ng.opencollection.json
-    type: OpenCollection
-  description: Retrieves KYC identity on file with the bank (names, emails, phone
-    numbers, addresses) and verifies a customer's income data drawn from their
-    connected accounts.
+  - type: OpenAPI
+    url: openapi/okra-ng-identity-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
+- aid: okra-ng:okra-ng-income-api
+  name: Okra Income API
+  description: Income verification.
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
+  tags:
+  - Income
+  properties:
+  - type: OpenAPI
+    url: openapi/okra-ng-income-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
 - aid: okra-ng:okra-ng-payments-api
   name: Okra Payments API
+  description: Bank-to-bank payments.
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
   tags:
   - Payments
-  - Bank to Bank
-  - Direct Debit
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://okra.ng/products/payments
-  baseURL: https://api.okra.ng/v2
   properties:
-  - url: https://okra.ng/products/payments
-    type: Documentation
-  - url: https://docs.okra.ng/reference
-    type: APIReference
-  - url: openapi/okra-ng-openapi.yml
-    type: OpenAPI
-  - url: collections/okra-ng.postman_collection.json
-    type: PostmanCollection
-  - url: collections/okra-ng.opencollection.json
-    type: OpenCollection
-  description: Collects one-time and recurring bank-to-bank payments via USSD and
-    internet banking, creates instant and future payments, retrieves and verifies
-    payment status, and supports bulk debits via CSV upload.
+  - type: OpenAPI
+    url: openapi/okra-ng-payments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
+- aid: okra-ng:okra-ng-transactions-api
+  name: Okra Transactions API
+  description: Transaction history and spending patterns.
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/okra-ng-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
 - aid: okra-ng:okra-ng-webhooks-api
   name: Okra Webhooks API
+  description: Callback management.
+  humanURL: https://docs.okra.ng/reference
+  baseURL: https://api.okra.ng/v2
   tags:
   - Webhooks
-  - Callbacks
-  - Events
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://blog.okra.ng/understanding-webhooks/
-  baseURL: https://api.okra.ng/v2
   properties:
-  - url: https://blog.okra.ng/understanding-webhooks/
-    type: Documentation
-  - url: https://docs.okra.ng/reference
-    type: APIReference
-  - url: openapi/okra-ng-openapi.yml
-    type: OpenAPI
-  - url: collections/okra-ng.postman_collection.json
-    type: PostmanCollection
-  - url: collections/okra-ng.opencollection.json
-    type: OpenCollection
-  description: Delivers asynchronous callbacks to a configured callback_url when
-    Okra finishes processing a product's data for a Record, and lets you re-trigger
-    callbacks for a set of record ids.
+  - type: OpenAPI
+    url: openapi/okra-ng-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.okra.ng/docs/auth
+  - type: APIReference
+    url: https://docs.okra.ng/reference
+  - type: PostmanCollection
+    url: collections/okra-ng.postman_collection.json
+  - type: OpenCollection
+    url: collections/okra-ng.opencollection.json
+  - type: Documentation
+    url: https://docs.okra.ng/docs/balance
+  - type: Documentation
+    url: https://docs.okra.ng/docs/overview
+  - type: Documentation
+    url: https://docs.okra.ng/docs/validate-customers
+  - type: Documentation
+    url: https://okra.ng/products/payments
+  - type: Documentation
+    url: https://blog.okra.ng/understanding-webhooks/
 common:
 - type: AgenticAccess
   url: agentic-access/okra-ng-agentic-access.yml
