@@ -1,0 +1,28 @@
+{
+  "provider": "okra-ng",
+  "sources": [
+    "okra-ng-accounts-api-openapi.yml",
+    "okra-ng-auth-api-openapi.yml",
+    "okra-ng-balance-api-openapi.yml",
+    "okra-ng-identity-api-openapi.yml",
+    "okra-ng-income-api-openapi.yml",
+    "okra-ng-payments-api-openapi.yml",
+    "okra-ng-transactions-api-openapi.yml",
+    "okra-ng-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "okra-ng-accounts-api-openapi.yml",
+    "okra-ng-auth-api-openapi.yml",
+    "okra-ng-balance-api-openapi.yml",
+    "okra-ng-identity-api-openapi.yml",
+    "okra-ng-income-api-openapi.yml",
+    "okra-ng-payments-api-openapi.yml",
+    "okra-ng-transactions-api-openapi.yml",
+    "okra-ng-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
