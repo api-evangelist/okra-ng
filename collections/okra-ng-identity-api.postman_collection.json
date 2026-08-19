@@ -1,0 +1,641 @@
+{
+  "item": [
+    {
+      "id": "4b2ceabe-ea6d-487e-a6c0-fe64a60d6781",
+      "name": "Identity",
+      "description": {
+        "content": "KYC identity on file with the bank.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ec71450-9eb3-4eb4-801d-899e9718314b",
+          "name": "Retrieve all identity records",
+          "request": {
+            "name": "Retrieve all identity records",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                "identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pdf\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b065a7f-39ea-4387-bd3c-6017af23e116",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pdf\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"data\": {\n    \"identity\": [\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      }\n    ],\n    \"pagination\": {\n      \"totalPages\": 7161,\n      \"currentPage\": 9333,\n      \"nextPage\": 9245,\n      \"previousPage\": 9329,\n      \"total\": 5754\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d647c2f7-f451-499e-b0b8-4e84ebe0d43d",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pdf\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35d1d790-1d5c-4a28-aab9-0449d10b5b62",
+          "name": "Retrieve an identity record by id",
+          "request": {
+            "name": "Retrieve an identity record by id",
+            "description": {},
+            "url": {
+              "path": [
+                "identity",
+                "getById"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b5ea3ed-2be4-4231-b23f-74457e6503e5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity",
+                    "getById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"data\": {\n    \"identity\": [\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      }\n    ],\n    \"pagination\": {\n      \"totalPages\": 9180,\n      \"currentPage\": 1261,\n      \"nextPage\": 8639,\n      \"previousPage\": 9661,\n      \"total\": 5266\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e122f56f-209f-4d21-bbe0-1affc353b72b",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity",
+                    "getById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b2622bd-34b4-4f29-b30d-227747cfc3a4",
+          "name": "Retrieve identity by customer",
+          "request": {
+            "name": "Retrieve identity by customer",
+            "description": {},
+            "url": {
+              "path": [
+                "identity",
+                "getByCustomer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer\": \"<string>\",\n  \"page\": 1,\n  \"limit\": 20\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4e0afa7-0230-4607-970d-c566a054a647",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity",
+                    "getByCustomer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer\": \"<string>\",\n  \"page\": 1,\n  \"limit\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"data\": {\n    \"identity\": [\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      }\n    ],\n    \"pagination\": {\n      \"totalPages\": 9180,\n      \"currentPage\": 1261,\n      \"nextPage\": 8639,\n      \"previousPage\": 9661,\n      \"total\": 5266\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5534c5ec-a3d7-4a58-bcb0-19d64a0eec80",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity",
+                    "getByCustomer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer\": \"<string>\",\n  \"page\": 1,\n  \"limit\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d96927ac-a98f-4dec-a019-c40ec7e8a067",
+          "name": "Retrieve identity records by date range",
+          "request": {
+            "name": "Retrieve identity records by date range",
+            "description": {},
+            "url": {
+              "path": [
+                "identity",
+                "getByDate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<date>\",\n  \"to\": \"<date>\",\n  \"page\": 1,\n  \"limit\": 20\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a12654a8-3fba-4616-a2e4-fb4eddf463ce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity",
+                    "getByDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<date>\",\n  \"to\": \"<date>\",\n  \"page\": 1,\n  \"limit\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"data\": {\n    \"identity\": [\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"customer\": \"string\",\n        \"fullname\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"address\": \"string\",\n        \"bvn\": \"string\"\n      }\n    ],\n    \"pagination\": {\n      \"totalPages\": 9180,\n      \"currentPage\": 1261,\n      \"nextPage\": 8639,\n      \"previousPage\": 9661,\n      \"total\": 5266\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "380268e5-4e5b-4390-9ead-954f27f67b13",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identity",
+                    "getByDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<date>\",\n  \"to\": \"<date>\",\n  \"page\": 1,\n  \"limit\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.okra.ng/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e1172372-9b12-44e5-aa3d-b3ecd8754f18",
+    "name": "Okra Accounts Identity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.\n\nContact Support:\n Name: Okra Support\n Email: support@okra.ng",
+      "type": "text/plain"
+    }
+  }
+}

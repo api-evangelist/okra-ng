@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "e9d4132b-5945-4f8d-b6ac-368918f4ee6e",
+      "name": "Accounts",
+      "description": {
+        "content": "Linked bank accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c90c0b0b-5c02-4638-9458-67efa914176a",
+          "name": "Retrieve all linked accounts",
+          "request": {
+            "name": "Retrieve all linked accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pdf\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85f3b5a3-cd08-49b0-93ac-83ffe0c0e11e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pdf\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"data\": {\n    \"accounts\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"nuban\": \"string\",\n        \"type\": \"string\",\n        \"bank\": \"string\",\n        \"currency\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"nuban\": \"string\",\n        \"type\": \"string\",\n        \"bank\": \"string\",\n        \"currency\": \"string\"\n      }\n    ],\n    \"pagination\": {\n      \"totalPages\": 568,\n      \"currentPage\": 9370,\n      \"nextPage\": 7718,\n      \"previousPage\": 6336,\n      \"total\": 4754\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2820d673-9f45-4b38-b8f4-b9fa1bc0b57e",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pdf\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.okra.ng/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3b11321f-8711-4ab5-b907-476b72574fa8",
+    "name": "Okra Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.\n\nContact Support:\n Name: Okra Support\n Email: support@okra.ng",
+      "type": "text/plain"
+    }
+  }
+}

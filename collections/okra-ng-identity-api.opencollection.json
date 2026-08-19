@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okra Accounts Identity API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all identity records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/identities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve all identity records"
+        },
+        {
+          "info": {
+            "name": "Retrieve an identity record by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/identity/getById",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve an identity record by id"
+        },
+        {
+          "info": {
+            "name": "Retrieve identity by customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/identity/getByCustomer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve identity by customer"
+        },
+        {
+          "info": {
+            "name": "Retrieve identity records by date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/identity/getByDate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve identity records by date range"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

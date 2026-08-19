@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okra Accounts Payments API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate a bank-to-bank payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/pay",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an instant one-time bank-to-bank payment (debit) from a customer's connected account to a configured beneficiary account."
+        },
+        {
+          "info": {
+            "name": "Verify a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/pay/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a payment"
+        },
+        {
+          "info": {
+            "name": "Retrieve a payment by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/pay/getById",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a payment by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

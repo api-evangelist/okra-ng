@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Okra Accounts Income API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Income",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve income records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/products/income",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns income verification data derived from a record's connected accounts, optionally as a PDF."
+        },
+        {
+          "info": {
+            "name": "Retrieve income by customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.okra.ng/v2/income/getByCustomer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve income by customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
