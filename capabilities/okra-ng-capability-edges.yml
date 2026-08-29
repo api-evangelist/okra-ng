@@ -1,0 +1,24 @@
+slug: okra-ng
+provider: Okra
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Payments
+  spec_file: okra-ng-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /products/pay initiatePayment 'Initiate a bank-to-bank payment'; POST /pay/verify verifyPayment
+  reason: Operations capture and initiate bank-to-bank payment instructions and verify their status, which
+    is payment initiation (PIS-style) rather than clearing or card processing.

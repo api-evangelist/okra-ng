@@ -280,6 +280,9 @@ apis:
   - type: Documentation
     url: https://blog.okra.ng/understanding-webhooks/
 common:
+- type: CapabilityMap
+  url: capabilities/okra-ng-capability-edges.yml
+  name: Okra Business Capability Map
 - type: AgenticAccess
   url: agentic-access/okra-ng-agentic-access.yml
 - type: DomainSecurity
