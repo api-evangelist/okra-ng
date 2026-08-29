@@ -8,6 +8,18 @@ description: Okra was an African open-finance / open-banking infrastructure comp
   and income data, and to initiate bank-to-bank payments, with a Link widget and
   webhooks. Okra wound down operations in May 2025; this catalog documents the
   API as it was publicly published.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
