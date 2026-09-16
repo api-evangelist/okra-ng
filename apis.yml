@@ -275,16 +275,16 @@ apis:
     url: https://okra.ng/products/payments
   - type: Documentation
     url: https://blog.okra.ng/understanding-webhooks/
-- aid: okra-ng:okra-africa-banks-api
+- aid: okra-ng:okra-ng-banks-api
   name: Okra Banks API
   description: Reference list of connectable banks.
-  humanURL: https://docs.okra.ng/reference/api/Auth
+  humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
   tags:
   - Banks
   properties:
   - type: OpenAPI
-    url: openapi/okra-africa-banks-api-openapi.yml
+    url: openapi/okra-ng-banks-api-openapi.yml
   - type: Documentation
     url: https://web.archive.org/web/20240225005139/https://docs.okra.ng/reference/api/Auth
   - type: APIReference
@@ -302,7 +302,8 @@ apis:
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Balance
   - type: Documentation
-    url: https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
+    url: >-
+      https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Transactions
   - type: Documentation
@@ -329,16 +330,16 @@ apis:
     url: https://web.archive.org/web/20241209040907/https://docs.okra.ng/reference/api/Wallets
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Wallets
-- aid: okra-ng:okra-africa-customers-api
+- aid: okra-ng:okra-ng-customers-api
   name: Okra Customers API
   description: End-user (customer) management.
-  humanURL: https://docs.okra.ng/reference/api/Auth
+  humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
   tags:
   - Customers
   properties:
   - type: OpenAPI
-    url: openapi/okra-africa-customers-api-openapi.yml
+    url: openapi/okra-ng-customers-api-openapi.yml
   - type: Documentation
     url: https://web.archive.org/web/20240225005139/https://docs.okra.ng/reference/api/Auth
   - type: APIReference
@@ -356,7 +357,8 @@ apis:
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Balance
   - type: Documentation
-    url: https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
+    url: >-
+      https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Transactions
   - type: Documentation
@@ -383,16 +385,16 @@ apis:
     url: https://web.archive.org/web/20241209040907/https://docs.okra.ng/reference/api/Wallets
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Wallets
-- aid: okra-ng:okra-africa-reports-api
+- aid: okra-ng:okra-ng-reports-api
   name: Okra Reports API
   description: Scheduled financial reports.
-  humanURL: https://docs.okra.ng/reference/api/Auth
+  humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
   tags:
   - Reports
   properties:
   - type: OpenAPI
-    url: openapi/okra-africa-reports-api-openapi.yml
+    url: openapi/okra-ng-reports-api-openapi.yml
   - type: Documentation
     url: https://web.archive.org/web/20240225005139/https://docs.okra.ng/reference/api/Auth
   - type: APIReference
@@ -410,7 +412,8 @@ apis:
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Balance
   - type: Documentation
-    url: https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
+    url: >-
+      https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Transactions
   - type: Documentation
@@ -437,16 +440,16 @@ apis:
     url: https://web.archive.org/web/20241209040907/https://docs.okra.ng/reference/api/Wallets
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Wallets
-- aid: okra-ng:okra-africa-verification-api
+- aid: okra-ng:okra-ng-verification-api
   name: Okra Verification API
   description: Nigerian KYC checks (BVN, NUBAN, TIN, RC).
-  humanURL: https://docs.okra.ng/reference/api/Auth
+  humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
   tags:
   - Verification
   properties:
   - type: OpenAPI
-    url: openapi/okra-africa-verification-api-openapi.yml
+    url: openapi/okra-ng-verification-api-openapi.yml
   - type: Documentation
     url: https://web.archive.org/web/20240225005139/https://docs.okra.ng/reference/api/Auth
   - type: APIReference
@@ -464,7 +467,8 @@ apis:
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Balance
   - type: Documentation
-    url: https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
+    url: >-
+      https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Transactions
   - type: Documentation
@@ -491,18 +495,16 @@ apis:
     url: https://web.archive.org/web/20241209040907/https://docs.okra.ng/reference/api/Wallets
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Wallets
-- aid: okra-ng:okra-africa-wallet-api
+- aid: okra-ng:okra-ng-wallet-api
   name: Okra Wallet API
   description: Billing wallet used to fund API usage.
-  humanURL: https://docs.okra.ng/reference/api/Auth
+  humanURL: https://docs.okra.ng/reference
   baseURL: https://api.okra.ng/v2
   tags:
-  - Wallets
-  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
-    url: openapi/okra-africa-wallet-api-openapi.yml
+    url: openapi/okra-ng-wallet-api-openapi.yml
   - type: Documentation
     url: https://web.archive.org/web/20240225005139/https://docs.okra.ng/reference/api/Auth
   - type: APIReference
@@ -520,7 +522,8 @@ apis:
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Balance
   - type: Documentation
-    url: https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
+    url: >-
+      https://web.archive.org/web/20240225015711/https://docs.okra.ng/reference/api/Transactions
   - type: APIReference
     url: https://docs.okra.ng/reference/api/Transactions
   - type: Documentation
