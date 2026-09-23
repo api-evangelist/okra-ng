@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okra Accounts Payments API
+  title: Okra Payments API
   description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
   termsOfService: https://okra.ng/terms
   contact:
@@ -90,21 +90,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
+    IdRequest:
       type: object
+      required:
+      - id
       properties:
-        status:
+        id:
           type: string
-          example: error
-        message:
-          type: string
-    PaymentResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        data:
-          $ref: '#/components/schemas/Payment'
+          description: The Okra record id.
     Payment:
       type: object
       properties:
@@ -120,14 +113,21 @@ components:
           type: string
         customer:
           type: string
-    IdRequest:
+    PaymentResponse:
       type: object
-      required:
-      - id
       properties:
-        id:
+        status:
           type: string
-          description: The Okra record id.
+        data:
+          $ref: '#/components/schemas/Payment'
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     PaymentRequest:
       type: object
       required:

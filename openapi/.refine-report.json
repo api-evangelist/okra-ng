@@ -1,16 +1,19 @@
 {
   "provider": "okra-ng",
   "sources": [
-    "okra-ng-accounts-api-openapi.yml",
-    "okra-ng-auth-api-openapi.yml",
-    "okra-ng-balance-api-openapi.yml",
-    "okra-ng-identity-api-openapi.yml",
-    "okra-ng-income-api-openapi.yml",
-    "okra-ng-payments-api-openapi.yml",
-    "okra-ng-transactions-api-openapi.yml",
-    "okra-ng-webhooks-api-openapi.yml"
+    "_original/okra-africa-banks-api-openapi.yml",
+    "_original/okra-africa-customers-api-openapi.yml",
+    "_original/okra-africa-reports-api-openapi.yml",
+    "_original/okra-africa-verification-api-openapi.yml",
+    "_original/okra-africa-wallet-api-openapi.yml",
+    "_original/okra-ng-openapi.yml"
   ],
   "outputs": [
+    "okra-ng-banks-api-openapi.yml",
+    "okra-ng-customers-api-openapi.yml",
+    "okra-ng-reports-api-openapi.yml",
+    "okra-ng-verification-api-openapi.yml",
+    "okra-ng-wallet-api-openapi.yml",
     "okra-ng-accounts-api-openapi.yml",
     "okra-ng-auth-api-openapi.yml",
     "okra-ng-balance-api-openapi.yml",
@@ -23,6 +26,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "okra-ng-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "okra-ng-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-balance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-banks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-identity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-income-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "okra-ng-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

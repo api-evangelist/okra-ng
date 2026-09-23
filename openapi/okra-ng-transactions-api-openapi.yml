@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Okra Accounts Transactions API
+  title: Okra Transactions API
   description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
   termsOfService: https://okra.ng/terms
   contact:
@@ -152,6 +152,16 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    GenericResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
     BankRequest:
       type: object
       required:
@@ -160,6 +170,40 @@ components:
         bank:
           type: string
           description: The Okra bank id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    AccountRequest:
+      type: object
+      required:
+      - account
+      properties:
+        account:
+          type: string
+          description: The Okra account id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    DateRangeRequest:
+      type: object
+      required:
+      - from
+      - to
+      properties:
+        from:
+          type: string
+          format: date
+          description: Start date (YYYY-MM-DD).
+        to:
+          type: string
+          format: date
+          description: End date (YYYY-MM-DD).
         page:
           type: integer
           default: 1
@@ -184,6 +228,19 @@ components:
         trans_date:
           type: string
           format: date-time
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
     PdfFlagRequest:
       type: object
       properties:
@@ -191,48 +248,6 @@ components:
           type: boolean
           default: false
           description: When true, return the records rendered as a PDF.
-    AccountRequest:
-      type: object
-      required:
-      - account
-      properties:
-        account:
-          type: string
-          description: The Okra account id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-    DateRangeRequest:
-      type: object
-      required:
-      - from
-      - to
-      properties:
-        from:
-          type: string
-          format: date
-          description: Start date (YYYY-MM-DD).
-        to:
-          type: string
-          format: date
-          description: End date (YYYY-MM-DD).
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
     TransactionListResponse:
       type: object
       properties:
@@ -261,29 +276,14 @@ components:
         limit:
           type: integer
           default: 20
-    GenericResponse:
+    Error:
       type: object
       properties:
         status:
           type: string
+          example: error
         message:
           type: string
-        data:
-          type: object
-          additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
   responses:
     Unauthorized:
       description: Missing or invalid API key.

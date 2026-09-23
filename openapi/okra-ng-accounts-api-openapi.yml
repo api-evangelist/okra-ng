@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Okra Accounts API
   description: 'Specification of the Okra open-finance API. Okra connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income, and to initiate bank-to-bank payments. All product and query endpoints are POST requests authenticated with a Bearer secret key. NOTE: Okra wound down operations in May 2025; endpoints are documented as they were publicly published and may no longer be live.'
@@ -41,6 +41,20 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    AccountListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            accounts:
+              type: array
+              items:
+                $ref: '#/components/schemas/Account'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
     PdfFlagRequest:
       type: object
       properties:
@@ -48,6 +62,19 @@ components:
           type: boolean
           default: false
           description: When true, return the records rendered as a PDF.
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
     Error:
       type: object
       properties:
@@ -71,33 +98,6 @@ components:
           type: string
         currency:
           type: string
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
-    AccountListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        data:
-          type: object
-          properties:
-            accounts:
-              type: array
-              items:
-                $ref: '#/components/schemas/Account'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
   responses:
     Unauthorized:
       description: Missing or invalid API key.
