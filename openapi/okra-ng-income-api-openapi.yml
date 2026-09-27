@@ -73,13 +73,14 @@ components:
         data:
           type: object
           additionalProperties: true
-    PdfFlagRequest:
+    Error:
       type: object
       properties:
-        pdf:
-          type: boolean
-          default: false
-          description: When true, return the records rendered as a PDF.
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     CustomerRequest:
       type: object
       required:
@@ -94,14 +95,13 @@ components:
         limit:
           type: integer
           default: 20
-    Error:
+    PdfFlagRequest:
       type: object
       properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
   responses:
     Unauthorized:
       description: Missing or invalid API key.

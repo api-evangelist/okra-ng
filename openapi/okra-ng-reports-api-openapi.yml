@@ -47,14 +47,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/OkraEnvelope'
-  requestBodies:
-    CustomerFilter:
-      description: Modeled customer-scoped filter body.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerFilter'
   schemas:
     CustomerFilter:
       type: object
@@ -86,6 +78,14 @@ components:
           type: object
           additionalProperties: true
       additionalProperties: true
+  requestBodies:
+    CustomerFilter:
+      description: Modeled customer-scoped filter body.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerFilter'
   securitySchemes:
     okraSecret:
       type: http

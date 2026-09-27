@@ -3,6 +3,7 @@ url: https://raw.githubusercontent.com/api-evangelist/okra-ng/refs/heads/main/ap
 name: Okra
 kind: company
 description: Okra was an African open-finance / open-banking infrastructure company based in Lagos, Nigeria. Its REST API connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income data, and to initiate bank-to-bank payments, with a Link widget and webhooks. Okra wound down operations in May 2025; this catalog documents the API as it was publicly published.
+x-status: defunct
 deliveryModel:
   model: saas
   open_source: false

@@ -54,14 +54,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
     GenericResponse:
       type: object
       properties:
@@ -72,6 +64,14 @@ components:
         data:
           type: object
           additionalProperties: true
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.

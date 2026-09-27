@@ -162,20 +162,32 @@ components:
         data:
           type: object
           additionalProperties: true
-    BankRequest:
+    Transaction:
       type: object
-      required:
-      - bank
       properties:
-        bank:
+        id:
           type: string
-          description: The Okra bank id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
+        account:
+          type: string
+        customer:
+          type: string
+        amount:
+          type: number
+        type:
+          type: string
+        notes:
+          type: string
+        trans_date:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     AccountRequest:
       type: object
       required:
@@ -190,6 +202,68 @@ components:
         limit:
           type: integer
           default: 20
+    CustomerRequest:
+      type: object
+      required:
+      - customer
+      properties:
+        customer:
+          type: string
+          description: The Okra customer id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    BankRequest:
+      type: object
+      required:
+      - bank
+      properties:
+        bank:
+          type: string
+          description: The Okra bank id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+    TransactionListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            transaction:
+              type: array
+              items:
+                $ref: '#/components/schemas/Transaction'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    PdfFlagRequest:
+      type: object
+      properties:
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
     DateRangeRequest:
       type: object
       required:
@@ -210,80 +284,6 @@ components:
         limit:
           type: integer
           default: 20
-    Transaction:
-      type: object
-      properties:
-        id:
-          type: string
-        account:
-          type: string
-        customer:
-          type: string
-        amount:
-          type: number
-        type:
-          type: string
-        notes:
-          type: string
-        trans_date:
-          type: string
-          format: date-time
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
-    PdfFlagRequest:
-      type: object
-      properties:
-        pdf:
-          type: boolean
-          default: false
-          description: When true, return the records rendered as a PDF.
-    TransactionListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        data:
-          type: object
-          properties:
-            transaction:
-              type: array
-              items:
-                $ref: '#/components/schemas/Transaction'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
-    CustomerRequest:
-      type: object
-      required:
-      - customer
-      properties:
-        customer:
-          type: string
-          description: The Okra customer id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.
