@@ -35,19 +35,32 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    OkraData:
-      description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OkraEnvelope'
     Unauthorized:
       description: Missing or invalid Okra Secret.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OkraEnvelope'
+    OkraData:
+      description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OkraEnvelope'
   schemas:
+    OkraEnvelope:
+      type: object
+      description: Modeled Okra response envelope.
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
     CustomerFilter:
       type: object
       description: Modeled. Customer-scoped filter, optionally with a date range.
@@ -64,19 +77,6 @@ components:
           type: integer
         limit:
           type: integer
-      additionalProperties: true
-    OkraEnvelope:
-      type: object
-      description: Modeled Okra response envelope.
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: object
-          additionalProperties: true
       additionalProperties: true
   requestBodies:
     CustomerFilter:

@@ -90,6 +90,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    IdRequest:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The Okra record id.
     PaymentRequest:
       type: object
       required:
@@ -143,14 +151,6 @@ components:
           type: string
         customer:
           type: string
-    IdRequest:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: The Okra record id.
   responses:
     Unauthorized:
       description: Missing or invalid API key.

@@ -53,7 +53,22 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     GenericResponse:
       type: object
       properties:
@@ -64,21 +79,6 @@ components:
         data:
           type: object
           additionalProperties: true
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

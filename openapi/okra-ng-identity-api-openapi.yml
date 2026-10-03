@@ -103,63 +103,35 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-    CustomerRequest:
+    DateRangeRequest:
       type: object
       required:
-      - customer
+      - from
+      - to
       properties:
-        customer:
+        from:
           type: string
-          description: The Okra customer id.
+          format: date
+          description: Start date (YYYY-MM-DD).
+        to:
+          type: string
+          format: date
+          description: End date (YYYY-MM-DD).
         page:
           type: integer
           default: 1
         limit:
           type: integer
           default: 20
-    IdentityListResponse:
+    IdRequest:
       type: object
+      required:
+      - id
       properties:
-        status:
+        id:
           type: string
-        data:
-          type: object
-          properties:
-            identity:
-              type: array
-              items:
-                $ref: '#/components/schemas/Identity'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
+          description: The Okra record id.
     Identity:
       type: object
       properties:
@@ -184,34 +156,62 @@ components:
           type: boolean
           default: false
           description: When true, return the records rendered as a PDF.
-    IdRequest:
+    IdentityListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            identity:
+              type: array
+              items:
+                $ref: '#/components/schemas/Identity'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+    CustomerRequest:
       type: object
       required:
-      - id
+      - customer
       properties:
-        id:
+        customer:
           type: string
-          description: The Okra record id.
-    DateRangeRequest:
-      type: object
-      required:
-      - from
-      - to
-      properties:
-        from:
-          type: string
-          format: date
-          description: Start date (YYYY-MM-DD).
-        to:
-          type: string
-          format: date
-          description: End date (YYYY-MM-DD).
+          description: The Okra customer id.
         page:
           type: integer
           default: 1
         limit:
           type: integer
           default: 20
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
