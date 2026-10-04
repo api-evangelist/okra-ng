@@ -35,14 +35,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    OkraData:
-      description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
+    Unauthorized:
+      description: Missing or invalid Okra Secret.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OkraEnvelope'
-    Unauthorized:
-      description: Missing or invalid Okra Secret.
+    OkraData:
+      description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
       content:
         application/json:
           schema:

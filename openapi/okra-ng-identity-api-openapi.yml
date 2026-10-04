@@ -104,6 +104,55 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    IdentityListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            identity:
+              type: array
+              items:
+                $ref: '#/components/schemas/Identity'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+    IdRequest:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The Okra record id.
+    CustomerRequest:
+      type: object
+      required:
+      - customer
+      properties:
+        customer:
+          type: string
+          description: The Okra customer id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
     DateRangeRequest:
       type: object
       required:
@@ -124,14 +173,6 @@ components:
         limit:
           type: integer
           default: 20
-    IdRequest:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: The Okra record id.
     Identity:
       type: object
       properties:
@@ -149,27 +190,6 @@ components:
           type: string
         bvn:
           type: string
-    PdfFlagRequest:
-      type: object
-      properties:
-        pdf:
-          type: boolean
-          default: false
-          description: When true, return the records rendered as a PDF.
-    IdentityListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        data:
-          type: object
-          properties:
-            identity:
-              type: array
-              items:
-                $ref: '#/components/schemas/Identity'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
     Error:
       type: object
       properties:
@@ -178,33 +198,13 @@ components:
           example: error
         message:
           type: string
-    Pagination:
+    PdfFlagRequest:
       type: object
       properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
-    CustomerRequest:
-      type: object
-      required:
-      - customer
-      properties:
-        customer:
-          type: string
-          description: The Okra customer id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
   responses:
     Unauthorized:
       description: Missing or invalid API key.

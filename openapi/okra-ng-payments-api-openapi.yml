@@ -90,6 +90,28 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    PaymentResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: '#/components/schemas/Payment'
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+        account:
+          type: string
+        customer:
+          type: string
     IdRequest:
       type: object
       required:
@@ -98,6 +120,14 @@ components:
         id:
           type: string
           description: The Okra record id.
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     PaymentRequest:
       type: object
       required:
@@ -121,36 +151,6 @@ components:
           type: string
           format: uri
           description: URL to receive the payment webhook callback.
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-    PaymentResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        data:
-          $ref: '#/components/schemas/Payment'
-    Payment:
-      type: object
-      properties:
-        id:
-          type: string
-        amount:
-          type: number
-        currency:
-          type: string
-        status:
-          type: string
-        account:
-          type: string
-        customer:
-          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key.

@@ -126,6 +126,70 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    BankRequest:
+      type: object
+      required:
+      - bank
+      properties:
+        bank:
+          type: string
+          description: The Okra bank id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        nuban:
+          type: string
+        type:
+          type: string
+        bank:
+          type: string
+        currency:
+          type: string
+    IdRequest:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The Okra record id.
+    CustomerRequest:
+      type: object
+      required:
+      - customer
+      properties:
+        customer:
+          type: string
+          description: The Okra customer id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
     DateRangeRequest:
       type: object
       required:
@@ -146,14 +210,21 @@ components:
         limit:
           type: integer
           default: 20
-    IdRequest:
+    Error:
       type: object
-      required:
-      - id
       properties:
-        id:
+        status:
           type: string
-          description: The Okra record id.
+          example: error
+        message:
+          type: string
+    PdfFlagRequest:
+      type: object
+      properties:
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
     AuthListResponse:
       type: object
       properties:
@@ -168,77 +239,6 @@ components:
                 $ref: '#/components/schemas/Account'
             pagination:
               $ref: '#/components/schemas/Pagination'
-    Account:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        nuban:
-          type: string
-        type:
-          type: string
-        bank:
-          type: string
-        currency:
-          type: string
-    PdfFlagRequest:
-      type: object
-      properties:
-        pdf:
-          type: boolean
-          default: false
-          description: When true, return the records rendered as a PDF.
-    BankRequest:
-      type: object
-      required:
-      - bank
-      properties:
-        bank:
-          type: string
-          description: The Okra bank id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
-    CustomerRequest:
-      type: object
-      required:
-      - customer
-      properties:
-        customer:
-          type: string
-          description: The Okra customer id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
   responses:
     Unauthorized:
       description: Missing or invalid API key.

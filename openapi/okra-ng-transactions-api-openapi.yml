@@ -152,33 +152,24 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    DateRangeRequest:
-      type: object
-      required:
-      - from
-      - to
-      properties:
-        from:
-          type: string
-          format: date
-          description: Start date (YYYY-MM-DD).
-        to:
-          type: string
-          format: date
-          description: End date (YYYY-MM-DD).
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
-    PdfFlagRequest:
+    Transaction:
       type: object
       properties:
-        pdf:
-          type: boolean
-          default: false
-          description: When true, return the records rendered as a PDF.
+        id:
+          type: string
+        account:
+          type: string
+        customer:
+          type: string
+        amount:
+          type: number
+        type:
+          type: string
+        notes:
+          type: string
+        trans_date:
+          type: string
+          format: date-time
     BankRequest:
       type: object
       required:
@@ -203,46 +194,20 @@ components:
         data:
           type: object
           additionalProperties: true
-    AccountRequest:
-      type: object
-      required:
-      - account
-      properties:
-        account:
-          type: string
-          description: The Okra account id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
-    Transaction:
-      type: object
-      properties:
-        id:
-          type: string
-        account:
-          type: string
-        customer:
-          type: string
-        amount:
-          type: number
-        type:
-          type: string
-        notes:
-          type: string
-        trans_date:
-          type: string
-          format: date-time
-    Error:
+    TransactionListResponse:
       type: object
       properties:
         status:
           type: string
-          example: error
-        message:
-          type: string
+        data:
+          type: object
+          properties:
+            transaction:
+              type: array
+              items:
+                $ref: '#/components/schemas/Transaction'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:
@@ -270,20 +235,55 @@ components:
         limit:
           type: integer
           default: 20
-    TransactionListResponse:
+    DateRangeRequest:
+      type: object
+      required:
+      - from
+      - to
+      properties:
+        from:
+          type: string
+          format: date
+          description: Start date (YYYY-MM-DD).
+        to:
+          type: string
+          format: date
+          description: End date (YYYY-MM-DD).
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    Error:
       type: object
       properties:
         status:
           type: string
-        data:
-          type: object
-          properties:
-            transaction:
-              type: array
-              items:
-                $ref: '#/components/schemas/Transaction'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
+          example: error
+        message:
+          type: string
+    PdfFlagRequest:
+      type: object
+      properties:
+        pdf:
+          type: boolean
+          default: false
+          description: When true, return the records rendered as a PDF.
+    AccountRequest:
+      type: object
+      required:
+      - account
+      properties:
+        account:
+          type: string
+          description: The Okra account id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
   responses:
     Unauthorized:
       description: Missing or invalid API key.

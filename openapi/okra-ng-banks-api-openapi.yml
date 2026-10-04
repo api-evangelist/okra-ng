@@ -48,19 +48,26 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    Unauthorized:
-      description: Missing or invalid Okra Secret.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OkraEnvelope'
     OkraData:
       description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OkraEnvelope'
+    Unauthorized:
+      description: Missing or invalid Okra Secret.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OkraEnvelope'
   requestBodies:
+    IdFilter:
+      description: Modeled id-lookup body.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IdFilter'
     EmptyFilter:
       description: Modeled empty/optional filter body.
       required: false
@@ -69,13 +76,6 @@ components:
           schema:
             type: object
             additionalProperties: true
-    IdFilter:
-      description: Modeled id-lookup body.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IdFilter'
   schemas:
     OkraEnvelope:
       type: object
