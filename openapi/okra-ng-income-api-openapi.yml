@@ -63,16 +63,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    GenericResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-        data:
-          type: object
-          additionalProperties: true
     CustomerRequest:
       type: object
       required:
@@ -87,6 +77,16 @@ components:
         limit:
           type: integer
           default: 20
+    GenericResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
     Error:
       type: object
       properties:

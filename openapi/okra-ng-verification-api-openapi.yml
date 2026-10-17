@@ -87,6 +87,19 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    OkraEnvelope:
+      type: object
+      description: Modeled Okra response envelope.
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
     KycFilter:
       type: object
       description: Modeled. KYC verification input (one of bvn, nuban, tin, rc, etc.).
@@ -102,32 +115,6 @@ components:
         rc_number:
           type: string
       additionalProperties: true
-    OkraEnvelope:
-      type: object
-      description: Modeled Okra response envelope.
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: object
-          additionalProperties: true
-      additionalProperties: true
-  responses:
-    OkraData:
-      description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OkraEnvelope'
-    Unauthorized:
-      description: Missing or invalid Okra Secret.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OkraEnvelope'
   requestBodies:
     KycFilter:
       description: Modeled KYC verification body.
@@ -136,6 +123,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/KycFilter'
+  responses:
+    Unauthorized:
+      description: Missing or invalid Okra Secret.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OkraEnvelope'
+    OkraData:
+      description: MODELED. Okra responses were JSON envelopes of the form {status, message, data}. The exact `data` shape varied per product and is not reproduced authoritatively here.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OkraEnvelope'
   securitySchemes:
     okraSecret:
       type: http

@@ -41,19 +41,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
     Account:
       type: object
       properties:
@@ -69,6 +56,19 @@ components:
           type: string
         currency:
           type: string
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
     Error:
       type: object
       properties:

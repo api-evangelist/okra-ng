@@ -126,14 +126,29 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    BankRequest:
+    Account:
       type: object
-      required:
-      - bank
       properties:
+        id:
+          type: string
+        name:
+          type: string
+        nuban:
+          type: string
+        type:
+          type: string
         bank:
           type: string
-          description: The Okra bank id.
+        currency:
+          type: string
+    CustomerRequest:
+      type: object
+      required:
+      - customer
+      properties:
+        customer:
+          type: string
+          description: The Okra customer id.
         page:
           type: integer
           default: 1
@@ -153,37 +168,14 @@ components:
           type: integer
         total:
           type: integer
-    Account:
+    BankRequest:
       type: object
+      required:
+      - bank
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        nuban:
-          type: string
-        type:
-          type: string
         bank:
           type: string
-        currency:
-          type: string
-    IdRequest:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: The Okra record id.
-    CustomerRequest:
-      type: object
-      required:
-      - customer
-      properties:
-        customer:
-          type: string
-          description: The Okra customer id.
+          description: The Okra bank id.
         page:
           type: integer
           default: 1
@@ -210,6 +202,20 @@ components:
         limit:
           type: integer
           default: 20
+    AuthListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            auths:
+              type: array
+              items:
+                $ref: '#/components/schemas/Account'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
     Error:
       type: object
       properties:
@@ -225,20 +231,14 @@ components:
           type: boolean
           default: false
           description: When true, return the records rendered as a PDF.
-    AuthListResponse:
+    IdRequest:
       type: object
+      required:
+      - id
       properties:
-        status:
+        id:
           type: string
-        data:
-          type: object
-          properties:
-            auths:
-              type: array
-              items:
-                $ref: '#/components/schemas/Account'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
+          description: The Okra record id.
   responses:
     Unauthorized:
       description: Missing or invalid API key.

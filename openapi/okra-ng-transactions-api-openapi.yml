@@ -170,57 +170,20 @@ components:
         trans_date:
           type: string
           format: date-time
-    BankRequest:
+    AccountRequest:
       type: object
       required:
-      - bank
+      - account
       properties:
-        bank:
+        account:
           type: string
-          description: The Okra bank id.
+          description: The Okra account id.
         page:
           type: integer
           default: 1
         limit:
           type: integer
           default: 20
-    GenericResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-        data:
-          type: object
-          additionalProperties: true
-    TransactionListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        data:
-          type: object
-          properties:
-            transaction:
-              type: array
-              items:
-                $ref: '#/components/schemas/Transaction'
-            pagination:
-              $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        totalPages:
-          type: integer
-        currentPage:
-          type: integer
-        nextPage:
-          type: integer
-        previousPage:
-          type: integer
-        total:
-          type: integer
     CustomerRequest:
       type: object
       required:
@@ -235,6 +198,57 @@ components:
         limit:
           type: integer
           default: 20
+    Pagination:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+        currentPage:
+          type: integer
+        nextPage:
+          type: integer
+        previousPage:
+          type: integer
+        total:
+          type: integer
+    BankRequest:
+      type: object
+      required:
+      - bank
+      properties:
+        bank:
+          type: string
+          description: The Okra bank id.
+        page:
+          type: integer
+          default: 1
+        limit:
+          type: integer
+          default: 20
+    TransactionListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            transaction:
+              type: array
+              items:
+                $ref: '#/components/schemas/Transaction'
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    GenericResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
     DateRangeRequest:
       type: object
       required:
@@ -270,20 +284,6 @@ components:
           type: boolean
           default: false
           description: When true, return the records rendered as a PDF.
-    AccountRequest:
-      type: object
-      required:
-      - account
-      properties:
-        account:
-          type: string
-          description: The Okra account id.
-        page:
-          type: integer
-          default: 1
-        limit:
-          type: integer
-          default: 20
   responses:
     Unauthorized:
       description: Missing or invalid API key.
