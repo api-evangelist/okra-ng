@@ -1,4 +1,4 @@
-# Okra (okra-ng)
+# Okra
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,167 +64,102 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
+
 Okra was an African open-finance / open-banking infrastructure company based in Lagos, Nigeria. Its REST API connected applications to Nigerian bank accounts to retrieve authentication details, balances, transactions, identity, and income data, and to initiate bank-to-bank payments, with a Link widget and webhooks. Okra wound down operations in May 2025; this catalog documents the API as it was publicly published.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/okra-ng/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/okra-ng/refs/heads/main/apis.yml)
+**Areas:** Open Banking · Open Finance · Fintech · Africa · Nigeria · Financial Data · Defunct
 
-## Tags
+## Okra on APIs.io (historical record)
 
-- Open Banking
-- Open Finance
-- Fintech
-- Africa
-- Nigeria
-- Financial Data
+Everything profiled for Okra is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/okra-ng/](https://apis.io/providers/okra-ng/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Okra Accounts API](https://apis.io/apis/okra-ng/okra-ng-accounts-api/) — Linked bank accounts.
+- [Okra Auth API](https://apis.io/apis/okra-ng/okra-ng-auth-api/) — Account authentication records and Link.
+- [Okra Balance API](https://apis.io/apis/okra-ng/okra-ng-balance-api/) — Account balances.
+- [Okra Identity API](https://apis.io/apis/okra-ng/okra-ng-identity-api/) — KYC identity on file with the bank.
+- [Okra Income API](https://apis.io/apis/okra-ng/okra-ng-income-api/) — Income verification.
+- [Okra Payments API](https://apis.io/apis/okra-ng/okra-ng-payments-api/) — Bank-to-bank payments.
+- [Okra Transactions API](https://apis.io/apis/okra-ng/okra-ng-transactions-api/) — Transaction history and spending patterns.
+- [Okra Webhooks API](https://apis.io/apis/okra-ng/okra-ng-webhooks-api/) — Callback management.
+- [Okra Banks API](https://apis.io/apis/okra-ng/okra-ng-banks-api/) — Reference list of connectable banks.
+- [Okra Customers API](https://apis.io/apis/okra-ng/okra-ng-customers-api/) — End-user (customer) management.
+- [Okra Reports API](https://apis.io/apis/okra-ng/okra-ng-reports-api/) — Scheduled financial reports.
+- [Okra Verification API](https://apis.io/apis/okra-ng/okra-ng-verification-api/) — Nigerian KYC checks (BVN, NUBAN, TIN, RC).
+- [Okra Wallet API](https://apis.io/apis/okra-ng/okra-ng-wallet-api/) — Billing wallet used to fund API usage.
 
-## APIs
+### Published properties
 
-### Okra Auth & Link API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Connects a customer's bank account via the Okra Link widget and retrieves authentication records - account and NUBAN numbers across current, savings, and domiciliary accounts - filterable by id, customer, bank, and date.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.okra.ng/reference](https://docs.okra.ng/reference)
-- **Base URL:** `https://api.okra.ng/v2`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Okra Ng Agentic Access](https://apis.io/agentic-access/okra-ng/okra-ng-agentic-access/)
 
-- Auth
-- Link
-- Account Linking
+#### Collections (10)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.okra.ng/docs/auth)
-- [API Reference](https://docs.okra.ng/reference)
-- [OpenAPI](openapi/okra-ng-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/okra-ng.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/okra-ng.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Okra API (Historical)](https://apis.io/collections/okra-ng/open-okra-africa/)
+- [Okra API](https://apis.io/collections/okra-ng/open-okra-ng/)
+- [Okra Accounts API](https://apis.io/collections/okra-ng/open-okra-ng-accounts-api/)
+- [Okra Accounts Auth API](https://apis.io/collections/okra-ng/open-okra-ng-auth-api/)
+- [Okra Accounts Balance API](https://apis.io/collections/okra-ng/open-okra-ng-balance-api/)
+- [Okra Accounts Identity API](https://apis.io/collections/okra-ng/open-okra-ng-identity-api/)
+- [Okra Accounts Income API](https://apis.io/collections/okra-ng/open-okra-ng-income-api/)
+- [Okra Accounts Payments API](https://apis.io/collections/okra-ng/open-okra-ng-payments-api/)
+- [Okra Accounts Transactions API](https://apis.io/collections/okra-ng/open-okra-ng-transactions-api/)
+- [Okra Accounts Webhooks API](https://apis.io/collections/okra-ng/open-okra-ng-webhooks-api/)
 
-### Okra Accounts & Balance API
+#### Security (2)
 
-Retrieves a record's linked accounts and real-time ledger and available balances, filterable by id, customer, account, balance type, and date range.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.okra.ng/account-data/balance](https://docs.okra.ng/account-data/balance)
-- **Base URL:** `https://api.okra.ng/v2`
+- [Okra Ng Authentication](https://apis.io/security/okra-ng/okra-ng-authentication/)
+- [Okra Ng Domain Security](https://apis.io/security/okra-ng/okra-ng-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Accounts
-- Balance
-- Financial Data
+Published plans, tiers and prices.
 
-#### Properties
+- [Okra Ng Plans Pricing](https://apis.io/plans/okra-ng/okra-ng-plans-pricing/)
 
-- [Documentation](https://docs.okra.ng/docs/balance)
-- [API Reference](https://docs.okra.ng/reference)
-- [OpenAPI](openapi/okra-ng-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/okra-ng.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/okra-ng.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Okra Transactions API
+Published request limits.
 
-Returns customer-authorized transaction history of up to 24 months across current, savings, and domiciliary accounts, filterable by customer, account, bank, and date, plus a spending-pattern analysis endpoint.
+- [Okra Ng Rate Limits](https://apis.io/rate-limits/okra-ng/okra-ng-rate-limits/)
 
-- **Human URL:** [https://docs.okra.ng/reference](https://docs.okra.ng/reference)
-- **Base URL:** `https://api.okra.ng/v2`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Transactions
-- History
-- Financial Data
+- [Okra Ng Finops](https://apis.io/finops/okra-ng/okra-ng-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.okra.ng/docs/overview)
-- [API Reference](https://docs.okra.ng/reference)
-- [OpenAPI](openapi/okra-ng-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/okra-ng.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/okra-ng.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Okra Identity & Income API
-
-Retrieves KYC identity on file with the bank (names, emails, phone numbers, addresses) and verifies a customer's income data drawn from their connected accounts.
-
-- **Human URL:** [https://docs.okra.ng/docs/validate-customers](https://docs.okra.ng/docs/validate-customers)
-- **Base URL:** `https://api.okra.ng/v2`
-
-#### Tags
-
-- Identity
-- Income
-- KYC
-
-#### Properties
-
-- [Documentation](https://docs.okra.ng/docs/validate-customers)
-- [API Reference](https://docs.okra.ng/reference)
-- [OpenAPI](openapi/okra-ng-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/okra-ng.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/okra-ng.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Okra Payments API
-
-Collects one-time and recurring bank-to-bank payments via USSD and internet banking, creates instant and future payments, retrieves and verifies payment status, and supports bulk debits via CSV upload.
-
-- **Human URL:** [https://okra.ng/products/payments](https://okra.ng/products/payments)
-- **Base URL:** `https://api.okra.ng/v2`
-
-#### Tags
-
-- Payments
-- Bank to Bank
-- Direct Debit
-
-#### Properties
-
-- [Documentation](https://okra.ng/products/payments)
-- [API Reference](https://docs.okra.ng/reference)
-- [OpenAPI](openapi/okra-ng-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/okra-ng.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/okra-ng.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Okra Webhooks API
-
-Delivers asynchronous callbacks to a configured callback_url when Okra finishes processing a product's data for a Record, and lets you re-trigger callbacks for a set of record ids.
-
-- **Human URL:** [https://blog.okra.ng/understanding-webhooks/](https://blog.okra.ng/understanding-webhooks/)
-- **Base URL:** `https://api.okra.ng/v2`
-
-#### Tags
-
-- Webhooks
-- Callbacks
-- Events
-
-#### Properties
-
-- [Documentation](https://blog.okra.ng/understanding-webhooks/)
-- [API Reference](https://docs.okra.ng/reference)
-- [OpenAPI](openapi/okra-ng-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/okra-ng.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/okra-ng.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/okraHQ)
-- [LinkedIn](https://www.linkedin.com/company/okra-technologies)
 - [Website](https://okra.ng/)
 - [Documentation](https://docs.okra.ng/)
-- [Plans](plans/okra-ng-plans-pricing.yml)
-- [Rate Limits](rate-limits/okra-ng-rate-limits.yml)
-- [Fin Ops](finops/okra-ng-finops.yml)
+- [GitHub](https://github.com/okraHQ)
 
-## Status
+## API Evangelist rating
 
-Okra wound down operations in May 2025. Both the core open-banking API business and its Nebula cloud product were discontinued, and a UK firm (Kernel) acquired remaining assets. No official public shutdown statement was issued. The documentation and API endpoints referenced in this catalog may no longer be live; they are documented here as they were publicly published.
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
 
-## Maintainers
+## How this profile is made
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Okra: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/okra-ng/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
